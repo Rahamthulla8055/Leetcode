@@ -10,18 +10,16 @@ int dbl(int n){
     return c;
 }
     int smallestIndex(vector<int>& nums) {
-        vector<int>a;
-        int c;
+        int c=INT_MAX;
         for(int i=0;i<nums.size();i++){
             if(nums[i]<=9){
-                if(nums[i]==i)  a.push_back(i);
+                if(nums[i]==i)  c=min(c,i);
             }
             else{
-                if(dbl(nums[i])==i)     a.push_back(i);
+                if(dbl(nums[i])==i)     c=min(c,i);
             }
         }
-        if(a.size()==0)     return -1;
-        c=*min_element(a.begin(),a.end());
+        if(c==INT_MAX)     return -1;
         return c;
     }
 };
